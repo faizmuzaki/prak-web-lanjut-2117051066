@@ -47,9 +47,17 @@ body {
         <label for="floatingNpm">NPM</label>
       </div>
       <div class="form-floating">
-        <input type="text" class="form-control mt-2" id="floatingKelas" placeholder="Kelas" name="kelas">
-        <label for="floatingKelas">Kelas</label>
+        <!-- <input type="text" class="form-control mt-2" id="floatingKelas" placeholder="Kelas" name="kelas"> -->
+        <!-- <label for="floatingKelas">Kelas</label> -->
+        <select class="form-select" aria-label="Default select example" name="kelas">
+          <?php
+            foreach ($kelas as $item){
+          ?>
+          <option value="<?=$item['id']?>"><?=$item['nama_kelas']?></option>
+          <?php } ?>
+        </select>
       </div>
+      
       <button class="btn btn-primary w-100 py-2 mt-3" type="submit">Insert it</button>
     </form>
   </main>
