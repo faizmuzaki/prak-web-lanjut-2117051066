@@ -42,12 +42,32 @@ class UserController extends BaseController
         ];
 
         $data  = [
-            'kelas' => $kelas
+            'kelas' => $kelas,
+            'validation' => \Config\Services::validation()
         ];
         return view('create_user', $data);
     }
     public function store()
     {
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} mahasiswa harus di isi.'
+                ]
+            ],
+            'npm' => [
+                'rules' => 'required|is_unique[user.npm]',
+                'errors' => [
+                    'required' => '{field} mahasiswa harus di isi.',
+                    'is_unique' => '{field} mahasiswa sudah terdaftar.'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to(base_url('/user/create'))->withInput()->with('validation', $validation);
+        }
+
         $userModel = new UserModel();
         $userModel->saveUser([
             'nama' => $this->request->getVar('nama'),
