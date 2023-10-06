@@ -5,7 +5,7 @@
   <!-- <p>Nama: Faiz Muzaki</p>
   <p>Kelas: D</p>
   <p>NPM: 2117051066</p> -->
-  <img src="<?= $user['foto'] ?? '<default-foto>' ?>" class="rounded-circle mx-auto d-block py-3" alt="..." width="140" height="180">
+  <img src="<?= $user['foto'] ?? 'https://avatars.githubusercontent.com/u/34159640?v=4' ?>" class="rounded-circle mx-auto d-block py-3" alt="..." width="140" height="180">
   <table class="mx-auto">
     <tr>
       <td>
