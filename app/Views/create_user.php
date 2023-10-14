@@ -22,20 +22,18 @@
         </div>
       <?php endif; ?>
     </div>
-    <div class="form-floating">
-      <select class="form-select mt-2" aria-label="Default select example" name="kelas">
-        <option value="" selected disabled>Pilih Kelas</option>
-        <?php
-        foreach ($kelas as $item) {
-        ?>
-          <option value="<?= $item['id'] ?>"><?= $item['nama_kelas'] ?></option>
-        <?php } ?>
-      </select>
-    </div>
+    <select class="form-select mt-2" aria-label="Default select example" name="kelas">
+      <option value="" selected disabled>Pilih Kelas</option>
+      <?php
+      foreach ($kelas as $item) {
+      ?>
+        <option value="<?= $item['id'] ?>"><?= $item['nama_kelas'] ?></option>
+      <?php } ?>
+    </select>
     <div class="form-floating">
       <div class="">
-        <label for="formFileSm" class="form-label">Foto</label>
-        <input class="form-control form-control-sm" id="formFileSm" type="file" name="foto">
+        <label for="formFile" class="form-label">Foto Mahasiswa</label>
+        <input class="form-control form-control-sm" id="formFile" type="file" name="foto">
       </div>
     </div>
 
