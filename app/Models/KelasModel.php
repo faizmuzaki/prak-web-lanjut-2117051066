@@ -66,14 +66,6 @@ class KelasModel extends Model
     }
     public function deleteKelas($id)
     {
-        try {
-            $this->delete($id);
-        } catch (mysqli_sql_exception $e) {
-            if (str_starts_with($e->getMessage(), "Data too long for column")) {
-                // handle the error
-            } else {
-                throw $e;
-            }
-        }
+        $this->delete($id);
     }
 }
