@@ -1,11 +1,15 @@
 <?= $this->extend('layouts/app') ?>
 <?= $this->section('content') ?>
-
 <div class="container">
   <div class="row">
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
+          <?php if (session('validation') && session('validation')->hasError('delete_failed')) : ?>
+            <div class="alert alert-danger">
+              <?= session('validation')->getError('delete_failed'); ?>
+            </div>
+          <?php endif; ?>
           <h6>Kelas table</h6>
           <a href="<?= base_url('kelas/create') ?>" class="badge badge-sm bg-gradient-secondary">Tambah Data</a>
         </div>
