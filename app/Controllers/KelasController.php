@@ -111,11 +111,14 @@ class KelasController extends BaseController
     }
     public function destroy($id)
     {
-        $result = $this->kelasModel->deleteKelas($id);
-        if (!$result) {
-            return redirect()->back()->with('error', 'Gagal menghapus data');
+        try {
+            $this->kelasModel->deleteKelas($id);
+            return redirect()->to(base_url('/kelas'));
+        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            log_message('error', 'Database error: ' . $e->getMessage());
+            $validation = service('validation');
+            $validation->setError('delete_failed', 'Gagal menghapus data, foreign key terpakai di user');
+            return redirect()->back()->with('validation', $validation);
         }
-        return redirect()->to(base_url('/kelas'))
-            ->with('success', 'Berhasil menghapus data!');
     }
 }
